@@ -1,1 +1,11 @@
-abc
+Package Version
+------- -------
+numpy   1.26.4
+Panda3D 1.10.14
+pip     24.0
+pyarrow 15.0.0
+pylance 0.12.1
+
+---------------
+
+abc     x
