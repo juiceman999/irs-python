@@ -1,0 +1,28 @@
+Package                Version
+---------------------- -----------
+contourpy              1.2.1
+customtkinter          5.2.2
+cycler                 0.12.1
+darkdetect             0.8.0
+DateTime               5.5
+fonttools              4.53.0
+kiwisolver             1.4.5
+matplotlib             3.9.0
+mysql-connector-python 8.4.0
+numpy                  1.26.4
+packaging              24.1
+pillow                 10.3.0
+pip                    24.0
+pyarrow                15.0.0
+pylance                0.12.1
+pyparsing              3.1.2
+python-dateutil        2.9.0.post0
+pytz                   2024.1
+setuptools             70.0.0
+six                    1.16.0
+zope.interface         6.4.post2
+
+###################### #######
+Package natifs         Version
+---------------------- -------
+abc                    x

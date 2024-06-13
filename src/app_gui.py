@@ -10,7 +10,6 @@ class GUI(Applications):
     def __init__(self):    
         # Instance attributes
         self.terminal_state = "LOADING"
-
         self.launch_app()
 
     def launch_app(self):
@@ -20,8 +19,17 @@ class GUI(Applications):
     def app_main_menu (self):
         print (f"Main menu\n 1) Start Game\n 2) Options\n 3) Quit Game")
 
+    def planning_menu (self):
+        pass
+
     def option_app(self):
         print(f"Veuillez indiquer votre age / poids / taille afin de calculer votre IMC")
+
+    def ask_exercise_list(self):
+        pass
+
+    def ask_exercise_id(self):
+        pass
 
     def quit_app (self):
         exit()

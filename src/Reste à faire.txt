@@ -1,9 +1,0 @@
-Terminal :
-    launch_app              OK
-    app_main_menu           OK
-    planning_menu
-    option_app              OK
-    ask_exercise_list       OK
-    ask_exercise_id         OK
-    quit_app                OK
-

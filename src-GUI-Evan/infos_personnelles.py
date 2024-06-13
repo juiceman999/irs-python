@@ -29,7 +29,7 @@ def create_personal_info_subcategories(container, user_info):
     show_health_info(health_frame, muscle_stats_frame)
 
 def create_health_widgets(container, user_info):
-    frame = ctk.CTkFrame(container)  # Supprimé borderwidth et relief
+    frame = ctk.CTkFrame(container)
     fields = [
         ("Poids (kg):", "weight"),
         ("Taille (cm):", "height"),
@@ -41,7 +41,8 @@ def create_health_widgets(container, user_info):
     for row, (label_text, key, *options) in enumerate(fields):
         ctk.CTkLabel(frame, text=label_text).grid(row=row, column=0, pady=10, padx=10)
         if options:
-            var = StringVar(value=user_info[key])
+            # Utiliser user_info.get(key, "") pour éviter le KeyError
+            var = StringVar(value=user_info.get(key, ""))
             ctk.CTkOptionMenu(frame, variable=var, values=options[0]).grid(row=row, column=1, pady=10, padx=10)
             setattr(frame, f"{key}_var", var)
         else:

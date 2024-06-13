@@ -18,6 +18,10 @@ class Applications (ABC):
         pass
 
     @abstractmethod
+    def planning_menu (self):
+        pass
+
+    @abstractmethod
     def option_app (self):
         pass
 

@@ -12,6 +12,7 @@ class Terminal(Applications):
     def __init__(self):    
         # Instance attributes
         self.terminal_state = "LOADING"
+        self.appointment_manager = AppointmentManager()
         
         self.launch_app()
         self.app_main_menu()
@@ -48,25 +49,38 @@ Main menu :
 
     def planning_menu(self):
         while True:
-            print("\nPlanning menu:\n  1) Display schedule for a date\n  2) Add appointment\n  3) Display calendar\n  4) Back to main menu")
+            print("""
+Planning menu:
+    1) Display calendar
+    2) Display schedule for a date
+    3) Add appointment
+    4) Back to main menu
+            """)
             choice = input("Please enter your choice (1-4): ")
 
             if choice == '1':
-                date = input("Enter date (YYYY-MM-DD): ")
-                self.AppointmentManager.display_schedule(date)
+                #year = AppointmentManager.get_int_input("Enter year: ")
+                #month = self.get_int_input("Enter month (1-12): ", 1, 12)
+                #self.AppointmentManager.display_calendar(year, month)
+                print(f"")
+                year = int(input("Enter year: "))
+                month = int(input("Enter month (1-12): "))
+                self.appointment_manager.display_calendar(year, month)
             elif choice == '2':
+                print(f"")
+                date = input("Enter date (YYYY-MM-DD): ")
+                self.appointment_manager.display_schedule(date)
+            elif choice == '3':
+                print(f"")
                 date = input("Enter date for the appointment (YYYY-MM-DD): ")
                 start_time = input("Enter start time for the appointment (HH:MM): ")
                 end_time = input("Enter end time for the appointment (HH:MM): ")
                 description = input("Enter description: ")
-                self.AppointmentManager.select_appointment(date, start_time, end_time, description)
-            elif choice == '3':
-                year = self.get_int_input("Enter year: ")
-                month = self.get_int_input("Enter month (1-12): ", 1, 12)
-                self.AppointmentManager.display_calendar(year, month)
+                self.appointment_manager.select_appointment(date, start_time, end_time, description)
             elif choice == '4':
                 break
             else:
+                print(f"")
                 print("Invalid choice. Please enter a number between 1 and 4.")
 
     def option_app(self):
@@ -82,7 +96,6 @@ Main menu :
         print(f"")
 
     def ask_exercise_id(self):
-        
         exercice_id = input("\nVeuillez renseigner le numéro d'ID de l'exercice pour afficher les muscles travaillés : ")
         
         # Utilisation de la fonction get_muscles_for_exercise depuis app_query.py
@@ -90,7 +103,7 @@ Main menu :
 
         # Affichage des résultats
         if exercice_nom:
-            print(f"Muscles associés à l'exercice ID {exercice_id} |  {exercice_nom[0][0]} :")
+            print(f"Muscles associés à l'exercice ID {exercice_id} | {exercice_nom[0][0]} :")
             for muscle in muscles:
                 print(f"ID: {muscle[0]}, Nom: {muscle[1]}")
         else:
