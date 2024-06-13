@@ -2,7 +2,7 @@ import os
 import sys
 from app import Applications
 from app_planning import AppointmentManager
-from app_query import get_muscles_for_exercise, get_muscles_list
+from app_query import get_muscles_for_exercise, get_exercices_list
 
 class Terminal(Applications):
     project_name = "Python Terminal"
@@ -88,7 +88,7 @@ Planning menu:
 
     def ask_exercise_list(self):
         print(f"")
-        exercice_list = get_muscles_list()
+        exercice_list = get_exercices_list()
         for exercice in exercice_list :
             print(exercice[0], "-", exercice[1],
                   "\n\t--> Description :", exercice[2], 

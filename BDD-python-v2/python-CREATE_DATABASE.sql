@@ -36,3 +36,14 @@ CREATE TABLE exercice_muscle (
     FOREIGN KEY (exercice_id) REFERENCES exercices(id) ON DELETE CASCADE,
     FOREIGN KEY (muscle_id) REFERENCES muscles(id) ON DELETE CASCADE
 );
+
+-- Table PLANNING
+CREATE TABLE planning (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    date DATE NOT NULL,
+    start_time TIME NOT NULL,
+    end_time TIME NOT NULL,
+    description TEXT,
+    FOREIGN KEY (username) REFERENCES utilisateurs(username) ON DELETE CASCADE
+);

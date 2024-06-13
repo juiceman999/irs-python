@@ -7,7 +7,12 @@ Terminal :
     ask_exercise_id         OK          MabsOK
     quit_app                OK          MabsOK
 
-    > Ajouter les rendez vous à la base de données
+    OK > Login
+    A faire > Ajouter les rendez vous à la base de données
+        Demander si créneau dépassé si la tache a bien été réalisée
+        Ajouter archive tache plutot que suppression ?
+    A faire > Complète la partie options avec les infos dans le mode GUI
+    A faire > Si pas de comtpe > Possibilité d'en créer un
 
 GUI :
     launch_app              A faire     A faire

@@ -2,7 +2,7 @@
 
 from database_connector import DatabaseConnector
 
-def get_muscles_list():
+def get_exercices_list():
     # Création de l'objet DatabaseConnector et connexion à la base de données
     db_connector = DatabaseConnector()
     conn = db_connector.connect()
