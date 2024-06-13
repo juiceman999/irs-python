@@ -22,6 +22,14 @@ class Applications (ABC):
         pass
 
     @abstractmethod
+    def ask_exercise_list(self):
+        pass
+    
+    @abstractmethod
+    def ask_exercise_id(self):
+        pass
+
+    @abstractmethod
     def quit_app (self):
         print(f"Application is shutting down ...")
         exit()

@@ -1,8 +1,16 @@
-# Objectif : Avoir 2 modes principaux 
-#   > un en ligne de commande
-#   > un en GUI : Panda3D / Custom Tkinter / Tkinter
-# Commencer par le terminal puuis alterner entre les 2
-# Avoir une classe abtraite pour l'application, une classe pour la CLI et une pour la GUI
+"""
+Objectif : Avoir 2 modes principaux 
+   > un en ligne de commande
+   > un en GUI : Panda3D / Custom Tkinter / Tkinter
+Commencer par le terminal puuis alterner entre les 2
+Avoir une classe abtraite pour l'application, une classe pour la CLI et une pour la GUI
+
+Dispoer d'une base préparée avec les fichiers :
+    - 
+    - 
+Configurer le fichier : database_config.py
+
+"""
 
 from app_cli import Terminal
 from app_gui import GUI
