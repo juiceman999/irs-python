@@ -31,4 +31,31 @@ def login():
     else:
         return None
 
-# Vous pouvez également ajouter d'autres fonctions ou méthodes liées à l'utilisateur ici si nécessaire
+def create_account():
+    db_connector = DatabaseConnector()
+    conn = db_connector.connect()
+    cursor = conn.cursor()
+    
+    while True:
+        username = input("Choose a username: ")
+        cursor.execute("SELECT * FROM utilisateurs WHERE username = %s", (username,))
+        if cursor.fetchone():
+            print("Username already taken. Please choose another one.")
+        else:
+            break
+
+    while True:
+        password = getpass("Choose a password: ")
+        confirm_password = getpass("Confirm your password: ")
+        if password != confirm_password:
+            print("Passwords do not match. Please try again.")
+        else:
+            break
+
+    cursor.execute("INSERT INTO utilisateurs (username, password, objectif) VALUES (%s, %s, %s)", (username, password, False))
+    conn.commit()
+    
+    cursor.close()
+    db_connector.close()
+    
+    print("Account created successfully. You can now log in.")

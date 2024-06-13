@@ -4,7 +4,7 @@
 # Database GUI : gym_gui
 
 DB_CONFIG = {
-    'host': '172.20.10.3',
+    'host': '192.168.118.145',
     'user': 'admin',
     'password': 'MotDePasse999!',
     'database': 'gym'

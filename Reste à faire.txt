@@ -7,12 +7,43 @@ Terminal :
     ask_exercise_id         OK          MabsOK
     quit_app                OK          MabsOK
 
-    OK > Login
-    A faire > Ajouter les rendez vous à la base de données
-        Demander si créneau dépassé si la tache a bien été réalisée
-        Ajouter archive tache plutot que suppression ?
-    A faire > Complète la partie options avec les infos dans le mode GUI
-    A faire > Si pas de comtpe > Possibilité d'en créer un
+    A faire > Compléter la partie options // Compte avec les infos dans le mode GUI
+        > Suppresion compte
+        > Santé
+            - Poids (Kg)
+            - Taille (Cm)
+            - Âge
+            - Sexe (H/F)
+            - Objectif : Perte depoids (0) / Prise de masse (1)
+
+            - Calcul auto de l'IMC (Reprendre formule GUI Evan)
+            - Poids idéal (Reprendre formule GUI Evan)
+            - Catégorie IMC (représentation visuelle / Barre de progression dans GUI)
+        > Stats personnelles
+            - Date
+            - Tour de cou (cm)
+            - Tour de poitrine (cm)
+            - Tour de taille (cm)
+            - Tour de hanches (cm)
+            - Tour de cuisse (cm)
+            - Tour de mollet (cm)
+            - Tour de biceps (cm)
+            - Tour d'Avant-bras (cm)
+            - Tour de poignet (cm)
+            - Tour d'épaules (cm)
+
+            - Afficher l'historique
+
+    A faire > Statistiques ?
+        > Courbe poids (y) / mois x6 (x)
+
+    A faire > Regrouper exercices dans un sous menu
+
+    A faire > Voir pour input auto sur un caractère dans les menus
+
+    OK > Ajouter les rendez vous à la base de données
+        x > Demander si créneau dépassé si la tache a bien été réalisée3
+        x > Ajouter archive tache plutot que suppression ?
 
 GUI :
     launch_app              A faire     A faire
@@ -22,3 +53,5 @@ GUI :
     ask_exercise_list       A faire     A faire
     ask_exercise_id         A faire     A faire
     quit_app                A faire     A faire
+
+    A faire > Fermetur propre de l'application

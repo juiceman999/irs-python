@@ -1,27 +1,6 @@
 """
-Objectif : Avoir 2 modes principaux 
-   > un en ligne de commande
-   > un en GUI : Panda3D / Custom Tkinter / Tkinter
 
-Commencer par le terminal puuis alterner entre les 2
-Avoir une classe abtraite pour l'application, une classe pour la CLI et une pour la GUI
-
-Dispoer d'une base préparée avec les fichiers :
-    - python-CREATE_DATABASE.sql
-    - python-INSERT-DATA.sql
-Configurer le fichier : database_config.py
-
------------------------------------------------------------
-
-usage: __main__.py [-h] [{Terminal,GUI}]
-
-Choisissez le mode de l'application.
-
-positional arguments:
-  {Terminal,GUI}  Mode d'application à lancer (Terminal ou GUI).
-
-options:
-  -h, --help      show this help message and exit
+@author: Romain Hénon-Hilaire
 
 """
 

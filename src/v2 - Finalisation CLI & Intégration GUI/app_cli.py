@@ -3,7 +3,7 @@ import sys
 from app import Applications
 from app_planning import AppointmentManager
 from app_query import get_muscles_for_exercise, get_exercices_list
-from app_login import login, Utilisateur
+from app_login import login, create_account, Utilisateur
 
 class Terminal(Applications):
     project_name = "Python Terminal"
@@ -13,14 +13,37 @@ class Terminal(Applications):
     def __init__(self):    
         # Instance attributes
         self.terminal_state = "LOADING"
-        
         self.user = None  # L'utilisateur n'est pas encore connecté
-        self.login_app()
+
+        self.initial_menu()
 
         self.appointment_manager = AppointmentManager()
 
         self.launch_app()
         self.app_main_menu()
+
+    def initial_menu(self):
+        while True:
+            print("""
+Bienvenue sur notre application !
+
+Initial menu:
+    1) Log in
+    2) Create account
+    3) Exit
+            """)
+            choice = input("Please enter your choice (1-3): ")
+
+            if choice == '1':
+                self.login_app()
+                if self.user:
+                    break
+            elif choice == '2':
+                create_account()
+            elif choice == '3':
+                self.quit_app()
+            else:
+                print("Invalid choice. Please enter a number between 1 and 3.")
 
     def login_app(self):
         user = login()
@@ -43,18 +66,18 @@ Bienvenue""",self.user.username,"""
 
 Main menu :
     1) Planning
-    2) Options
+    2) Options du compte
     3) Liste des exercices
     4) Muscles travaillés par un exercice
     5) Quitter Application
             """)
-        
+
             choice = input("Please enter your choice (1-5): ")
 
             if choice == '1':
                 self.planning_menu()
             elif choice == '2':
-                self.option_app()
+                self.account_options_app()
             elif choice == '3':
                 self.ask_exercise_list()
             elif choice == '4':
@@ -104,7 +127,7 @@ Planning menu:
                 print(f"")
                 print("Invalid choice. Please enter a number between 1 and 4.")
 
-    def option_app(self):
+    def account_options_app(self):
         print(f"\nVeuillez indiquer votre age / poids / taille afin de calculer votre IMC")
 
     def ask_exercise_list(self):
