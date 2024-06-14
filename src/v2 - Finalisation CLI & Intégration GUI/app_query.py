@@ -143,16 +143,16 @@ def delete_account(username):
     cursor.close()
     db_connector.close()
 
-def save_health_data(username, weight, height, birthdate, sex, goal):
+def save_health_data(username, weight, height, goal):
     db_connector = DatabaseConnector()
     conn = db_connector.connect()
     cursor = conn.cursor()
     
     query = """
-    INSERT INTO health_data (username, weight, height, birthdate, sex, goal, timestamp)
-    VALUES (%s, %s, %s, %s, %s, %s, NOW())
+    INSERT INTO health_data (username, weight, height, goal, timestamp)
+    VALUES (%s, %s, %s, %s, NOW())
     """
-    cursor.execute(query, (username, weight, height, birthdate, sex, goal))
+    cursor.execute(query, (username, weight, height, goal))
     conn.commit()
     
     cursor.close()

@@ -11,6 +11,8 @@ CREATE TABLE utilisateurs (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(100) NOT NULL,
+    birthdate DATE NOT NULL,
+    sex ENUM('M', 'F') NOT NULL,
     objectif BOOLEAN NOT NULL -- true pour 'prise de masse', false pour 'perte de poids'
 );
 
@@ -54,8 +56,6 @@ CREATE TABLE IF NOT EXISTS health_data (
     username VARCHAR(50) NOT NULL,
     weight FLOAT NOT NULL, -- Poids en kg
     height FLOAT NOT NULL, -- Taille en cm
-    birthdate DATE NOT NULL,
-    sex ENUM('M', 'F') NOT NULL,
     goal BOOLEAN NOT NULL, -- true pour 'prise de masse', false pour 'perte de poids'
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (username) REFERENCES utilisateurs(username) ON DELETE CASCADE

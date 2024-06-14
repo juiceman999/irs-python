@@ -2,6 +2,8 @@
 
 from database_connector import DatabaseConnector
 from getpass import getpass
+import hashlib
+import datetime
 
 class Utilisateur:
     def __init__(self, username, password):
@@ -16,8 +18,10 @@ def login():
     
     username = input("Username: ")
     password = getpass("Password: ")
+
+    hashed_password = hashlib.sha256(password.encode()).hexdigest()
     
-    cursor.execute("SELECT * FROM utilisateurs WHERE username = %s AND password = %s", (username, password))
+    cursor.execute("SELECT * FROM utilisateurs WHERE username = %s AND password = %s", (username, hashed_password))
     user_data = cursor.fetchone()
     
     cursor.close()
@@ -50,9 +54,25 @@ def create_account():
         if password != confirm_password:
             print("Passwords do not match. Please try again.")
         else:
+            hashed_password = hashlib.sha256(password.encode()).hexdigest()
             break
+    
+    while True:
+        birthdate = input("Entrez votre date de naissance (format YYYY-MM-DD) : ")
+        try:
+            birthdate = datetime.datetime.strptime(birthdate, "%Y-%m-%d").date()
+            break
+        except ValueError:
+            print("Format de date incorrect. Assurez-vous d'utiliser le format YYYY-MM-DD.")
 
-    cursor.execute("INSERT INTO utilisateurs (username, password, objectif) VALUES (%s, %s, %s)", (username, password, False))
+    while True:
+        sex = input("Entrez votre sexe (M/F) : ").upper()
+        if sex == 'M' or sex == 'F':
+            break
+        else:
+            print("Sexe incorrect. Veuillez entrer 'M' pour masculin ou 'F' pour féminin.")
+
+    cursor.execute("INSERT INTO utilisateurs (username, password, birthdate, sex, objectif) VALUES (%s, %s, %s, %s, %s)", (username, hashed_password, birthdate, sex, False))
     conn.commit()
     
     cursor.close()
