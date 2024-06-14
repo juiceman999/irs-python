@@ -1,11 +1,15 @@
 import customtkinter as ctk
 from tkinter import Frame, Listbox, Toplevel, Text, END, StringVar, BOTH
+from app_query import get_exercices_list
 
 machines = [
     {"name": "Tapis de course", "body_parts": ["Cardio"], "description": "Pour la course et la marche.", "video": "url_video_tapis_de_course"},
     {"name": "Vélo elliptique", "body_parts": ["Cardio"], "description": "Pour un entraînement cardio à faible impact.", "video": "url_video_elliptique"},
     # Ajouter d'autres machines ici
 ]
+
+exercice_list = get_exercices_list()
+
 
 def create_exercises_frame(parent):
     frame = ctk.CTkFrame(parent)

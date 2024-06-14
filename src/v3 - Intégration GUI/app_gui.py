@@ -124,7 +124,7 @@ class GUI(Applications):
 
     def cleanup(self):
         print("Performing cleanup tasks...")
-        save_user_info({"first_name": "Utilisateur"})
+        #save_user_info({"first_name": "Utilisateur"})
 
     def on_closing(self):
         # Méthode appelée lorsque l'utilisateur tente de fermer la fenêtre
