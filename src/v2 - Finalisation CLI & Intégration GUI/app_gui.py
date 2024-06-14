@@ -2,6 +2,7 @@ import os
 import sys
 from app import Applications
 
+
 class GUI(Applications):
     project_name = "Python GUI"
     project_version = float(1.0)
