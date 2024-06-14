@@ -7,7 +7,7 @@ GRANT ALL PRIVILEGES ON gym.* TO 'admin'@'%';
 FLUSH PRIVILEGES;
 
 -- Table UTILISATEUR
-CREATE TABLE utilisateurs (
+CREATE TABLE IF NOT EXISTS utilisateurs (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(100) NOT NULL,
@@ -17,13 +17,13 @@ CREATE TABLE utilisateurs (
 );
 
 -- Table PARTIE_DU_CORPS
-CREATE TABLE muscles (
+CREATE TABLE IF NOT EXISTS muscles (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(50) NOT NULL
 );
 
 -- Table EXERCICE
-CREATE TABLE exercices (
+CREATE TABLE IF NOT EXISTS exercices (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(100) NOT NULL,
     description TEXT,
@@ -31,7 +31,7 @@ CREATE TABLE exercices (
 );
 
 -- Table de jointure EXERCICE_MUSCLE
-CREATE TABLE exercice_muscle (
+CREATE TABLE IF NOT EXISTS exercice_muscle (
     exercice_id INT NOT NULL,
     muscle_id INT NOT NULL,
     PRIMARY KEY (exercice_id, muscle_id),
@@ -40,7 +40,7 @@ CREATE TABLE exercice_muscle (
 );
 
 -- Table PLANNING
-CREATE TABLE planning (
+CREATE TABLE IF NOT EXISTS planning (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL,
     date DATE NOT NULL,
