@@ -8,7 +8,7 @@ class Applications (ABC):
 
     # ------------------------------
     # Methods
-   
+
     @abstractmethod
     def launch_app (self):
         print(f"Application is loading ...")
@@ -22,7 +22,7 @@ class Applications (ABC):
         pass
 
     @abstractmethod
-    def option_app (self):
+    def account_options_app (self):
         pass
 
     @abstractmethod

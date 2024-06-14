@@ -1,9 +1,12 @@
+# app_cli.py
+
 import os
 import sys
 from app import Applications
 from app_planning import AppointmentManager
 from app_query import get_muscles_for_exercise, get_exercices_list
 from app_login import login, create_account, Utilisateur
+from app_account_options import AccountOptions
 
 class Terminal(Applications):
     project_name = "Python Terminal"
@@ -128,7 +131,29 @@ Planning menu:
                 print("Invalid choice. Please enter a number between 1 and 4.")
 
     def account_options_app(self):
-        print(f"\nVeuillez indiquer votre age / poids / taille afin de calculer votre IMC")
+        account_manager = AccountOptions(self.user.username)
+        while True:
+            print("""
+Account Options:
+    1) Delete Account
+    2) Health Menu
+    3) Personal Stats Menu
+    4) Back to Main Menu
+            """)
+            choice = input("Please enter your choice (1-4): ")
+
+            if choice == '1':
+                account_manager.delete_account()
+                print("Your account has been deleted. Exiting application.")
+                self.quit_app()
+            elif choice == '2':
+                account_manager.health_menu()
+            elif choice == '3':
+                account_manager.personal_stats_menu()
+            elif choice == '4':
+                break
+            else:
+                print("Invalid choice. Please enter a number between 1 and 4.")
 
     def ask_exercise_list(self):
         print(f"")

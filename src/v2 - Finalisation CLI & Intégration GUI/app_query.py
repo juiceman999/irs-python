@@ -2,6 +2,8 @@
 
 from database_connector import DatabaseConnector
 
+### Exercices
+
 def get_exercices_list():
     # Création de l'objet DatabaseConnector et connexion à la base de données
     db_connector = DatabaseConnector()
@@ -63,7 +65,7 @@ def get_muscles_for_exercise(exercice_id):
     # Retourner les résultats
     return exercice_nom, muscles
 
-################
+### Planning
 
 def add_appointment(username, date, start_time, end_time, description):
     db_connector = DatabaseConnector()
@@ -126,3 +128,79 @@ def get_appointment_dates(username, year, month):
     db_connector.close()
     
     return appointment_dates
+
+### Options du compte
+
+def delete_account(username):
+    db_connector = DatabaseConnector()
+    conn = db_connector.connect()
+    cursor = conn.cursor()
+    
+    query = "DELETE FROM utilisateurs WHERE username = %s"
+    cursor.execute(query, (username,))
+    conn.commit()
+    
+    cursor.close()
+    db_connector.close()
+
+def save_health_data(username, weight, height, birthdate, sex, goal):
+    db_connector = DatabaseConnector()
+    conn = db_connector.connect()
+    cursor = conn.cursor()
+    
+    query = """
+    INSERT INTO health_data (username, weight, height, birthdate, sex, goal, timestamp)
+    VALUES (%s, %s, %s, %s, %s, %s, NOW())
+    """
+    cursor.execute(query, (username, weight, height, birthdate, sex, goal))
+    conn.commit()
+    
+    cursor.close()
+    db_connector.close()
+
+def get_health_data(username):
+    db_connector = DatabaseConnector()
+    conn = db_connector.connect()
+    cursor = conn.cursor()
+    
+    query = "SELECT * FROM health_data WHERE username = %s ORDER BY timestamp DESC"
+    cursor.execute(query, (username,))
+    health_data = cursor.fetchall()
+    
+    cursor.close()
+    db_connector.close()
+    
+    return health_data
+
+def save_personal_stats(username, **stats):
+    db_connector = DatabaseConnector()
+    conn = db_connector.connect()
+    cursor = conn.cursor()
+    
+    columns = ', '.join(stats.keys())
+    placeholders = ', '.join(['%s'] * len(stats))
+    values = list(stats.values())
+    
+    query = f"""
+    INSERT INTO personal_stats (username, {columns}, timestamp)
+    VALUES (%s, {placeholders}, NOW())
+    """
+    cursor.execute(query, (username, *values))
+    conn.commit()
+    
+    cursor.close()
+    db_connector.close()
+
+def get_personal_stats(username):
+    db_connector = DatabaseConnector()
+    conn = db_connector.connect()
+    cursor = conn.cursor()
+    
+    query = "SELECT * FROM personal_stats WHERE username = %s ORDER BY timestamp DESC"
+    cursor.execute(query, (username,))
+    stats = cursor.fetchall()
+    
+    cursor.close()
+    db_connector.close()
+    
+    return stats
