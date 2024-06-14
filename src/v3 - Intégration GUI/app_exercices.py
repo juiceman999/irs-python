@@ -8,9 +8,6 @@ machines = [
     # Ajouter d'autres machines ici
 ]
 
-exercice_list = get_exercices_list()
-
-
 def create_exercises_frame(parent):
     frame = ctk.CTkFrame(parent)
     frame.pack(fill=BOTH, expand=True)
